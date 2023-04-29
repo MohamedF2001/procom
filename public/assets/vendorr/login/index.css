@@ -1,0 +1,46 @@
+   .modal-body .d-flex {
+            flex-wrap: wrap;
+            margin-top: 0px !important;
+        }
+
+        .modal-body .text-dark {
+            width: 100%;
+            text-align: left;
+            background: rgb(238, 241, 248);
+            padding: 7px 8px;
+            border-radius: 3px;
+            margin: 0 !important;
+            font-size: .9em;
+        }
+
+        .modal-body .ms-2 {
+            width: 100%;
+            margin: 0 !important;
+            text-align: left;
+            padding: 7px 8px;
+            font-size: .9em;
+        }
+
+        .modal-body .ms-2 .ms-2 {
+            font-size: 1em;
+            padding: 0 !important;
+        }
+
+        .modal-body .ms-2 .ms-2 span,
+        .modal-body .list-unstyled li {
+            display: block;
+            width: 100%;
+            border-bottom: 1px solid rgba(0, 0, 0, .05);
+            padding-top: 10px;
+            padding-bottom: 10px;
+            margin-top: -3px;
+        }
+
+        .modal-body .list-unstyled br {
+            display: none;
+        }
+
+        .modal-body .ms-2 .ms-2 span:last-child,
+        .modal-body .list-unstyled li:last-child {
+            border-bottom: none
+        }
