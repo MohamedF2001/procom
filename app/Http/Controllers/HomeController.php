@@ -153,13 +153,20 @@ class HomeController extends Controller
     }
 
     public function addCommande(Request $request) {
+        $client = $request->input('client');
+        $prenom = $request->input('prenom');
+        $article = $request->input('article');
+        $dansLePanier = $request->input('dansLePanier');
+        $prixU = $request->input('prixU');
+
         $commande = new Commande();
-        $commande->client->post('client');
-        $commande->prenom->post('prenom');
-        $commande->article->post('article');
-        $commande->dansLePanier->post('dansLePanier');
-        $commande->prixU->post('prixU');
-        if($commande->save()) {
+        $commande->client = $client;
+        $commande->prenom = $prenom;
+        $commande->article = $article;
+        $commande->dansLePanier = $dansLePanier;
+        $commande->prixU = $prixU;
+
+        if ($commande->save()) {
             return response()->json([
                 "success" => true,
             ]);
@@ -169,5 +176,4 @@ class HomeController extends Controller
             ]);
         }
     }
-
 }
