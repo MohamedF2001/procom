@@ -14,6 +14,7 @@ class Commande extends Model
         'prenom',
         'article',
         'dansLePanier',
-        'prixU'
+        'prixU',
+        'etatCommande',
     ];
 }

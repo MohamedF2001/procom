@@ -18,7 +18,6 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-
     }
 
     /**
@@ -28,14 +27,15 @@ class HomeController extends Controller
      */
     public function userHome()
     {
-        return view('home',["msg"=>"I am user role"]);
+        return view('home', ["msg" => "I am user role"]);
     }
 
     public function editorHome()
     {
-        return view('home',["msg"=>"I am Editor role"]);
+        return view('home', ["msg" => "I am Editor role"]);
     }
 
+    //page d'accueil après authentification
     public function adminHome()
     {
         //return view('homee',["msg"=>"I am Admin role"]);
@@ -47,32 +47,39 @@ class HomeController extends Controller
         return view('index');
     }
 
-    public function homeCat() {
+    //formulaire d'ajout de catégorie
+    public function homeCat()
+    {
         return view('addcat');
     }
-
-    public function homeFast() {
-        $categories = Categorie::pluck('nomCat','id');
+    //formulaire d'ajout de produit
+    public function homeFast()
+    {
+        $categories = Categorie::pluck('nomCat', 'id');
         //dd($categories);
-        return view('addfast',[
-            'categories'=>$categories,
+        return view('addfast', [
+            'categories' => $categories,
         ]);
     }
 
-    public function homeCommande() {
+    public function homeCommande()
+    {
         return view('addcom');
     }
 
-    public function listes() {
+    public function listes()
+    {
         return view('liste');
     }
 
-    public function store(Request $request) {
+    //ajouter une catégorie
+    public function store(Request $request)
+    {
         $categorie = new Categorie();
         $categorie->nomCat = $request->input('nomCat');
         $categorie->descriptionCat = $request->input('descriptionCat');
         //dd($request);
-        if($request->hasfile('imageCat')) {
+        if ($request->hasfile('imageCat')) {
             $file = $request->file('imageCat');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
@@ -83,10 +90,12 @@ class HomeController extends Controller
             $categorie->imageCat = "";
         }
         $categorie->save();
-        return view('addcat')->with('categorie',$categorie);
+        return view('addcat')->with('categorie', $categorie);
     }
 
-    public function storeFast(Request $request) {
+    //ajouter un produit
+    public function storeFast(Request $request)
+    {
         $fastfood = new Fastfood();
         $fastfood->nomFast = $request->input('nomFast');
         $fastfood->descriptionFast = $request->input('descriptionFast');
@@ -94,7 +103,7 @@ class HomeController extends Controller
         $fastfood->qtiteFast = $request->input('qtiteFast');
         $fastfood->qtitePanierFast = $request->input('qtitePanierFast');
         $fastfood->categories_id = $request->input('category');
-        if($request->hasfile('imageFast')) {
+        if ($request->hasfile('imageFast')) {
             $file = $request->file('imageFast');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
@@ -106,15 +115,16 @@ class HomeController extends Controller
         }
         $fastfood->save();
         $fastfoods = FastFood::all();
-        $categories = Categorie::pluck('nomCat','id');
+        $categories = Categorie::pluck('nomCat', 'id');
         //dd($categories);
-        return view('addfast',[
-            'fastfoods'=>$fastfoods,
-            'categories'=>$categories,
+        return view('addfast', [
+            'fastfoods' => $fastfoods,
+            'categories' => $categories,
         ]);
     }
 
-    public function storeCommande(Request $request) {
+    public function storeCommande(Request $request)
+    {
         $commande = new Commande();
         $commande->client = $request->input('client');
         $commande->prenom = $request->input('prenom');
@@ -133,26 +143,34 @@ class HomeController extends Controller
             $categorie->imageCat = "";
         } */
         $commande->save();
-        return view('addcom')->with('commande',$commande);
+        return view('addcom')->with('commande', $commande);
     }
 
-    public function displayCat() {
+    //afficher la listes des catégories
+    public function displayCat()
+    {
         $categories = Categorie::all();
-        return view('listeCat')->with('categories',$categories);
+        return view('listeCat')->with('categories', $categories);
     }
 
-    public function displayFast() {
+    //afficher la listes des produits fastfood
+    public function displayFast()
+    {
         $fastfoods = FastFood::all();
         $categoriess = Categorie::all();
-        return view('listeFast')->with('fastfoods',$fastfoods);
+        return view('listeFast')->with('fastfoods', $fastfoods);
     }
 
-    public function displayCom() {
+    //afficher la listes des commandes
+    public function displayCom()
+    {
         $commandes = Commande::all();
-        return view('listCom')->with('commandes',$commandes);
+        return view('listCom')->with('commandes', $commandes);
     }
 
-    public function addCommande(Request $request) {
+    //ajouter une commande
+    public function addCommande(Request $request)
+    {
         $client = $request->input('client');
         $prenom = $request->input('prenom');
         $article = $request->input('article');
@@ -167,13 +185,82 @@ class HomeController extends Controller
         $commande->prixU = $prixU;
 
         if ($commande->save()) {
-            return response()->json([
+            return view('addcom')->with('commande', $commande);
+            /*  return response()->json([
                 "success" => true,
-            ]);
+            ]); */
         } else {
             return response()->json([
                 "error" => false,
             ]);
         }
+    }
+
+    //supprimer une commande
+    public function destroyCommande($id)
+    {
+        $commandes = Commande::find($id); // Récupérer l'élément à supprimer
+
+        if ($commandes === null) {
+            return back()->with('error', 'La commande demandée est introuvable.');
+        }
+        $commandes->delete();
+        return redirect()->route('admin.listeCom');
+    }
+
+    //mettre a jour le status de la commande
+    public function updateStateCommande($id)
+    {
+        $commandes = Commande::find($id);
+
+        if ($commandes) {
+            $commandes->etatCommande = !$commandes->etatCommande; // Inversion de la valeur actuelle
+            $commandes->save();
+            // Retourner la réponse ou effectuer d'autres actions si nécessaire
+            //return response()->json(['success' => true, 'message' => 'État de la commande mis à jour avec succès']);
+            return redirect()->route('admin.listeCom');
+        }
+        return response()->json(['success' => false, 'message' => 'Commande introuvable']);
+    }
+
+    //supprimer un fastfood
+    public function destroyFast($id)
+    {
+        $fastfoods = FastFood::find($id); // Récupérer l'élément à supprimer
+
+        if ($fastfoods === null) {
+            return back()->with('error', 'La commande demandée est introuvable.');
+        }
+        $fastfoods->delete();
+        return redirect()->route('admin.listeFast');
+    }
+
+    //supprimer une catégorie
+    public function destroyCat($id)
+    {
+        $categories = Categorie::find($id); // Récupérer l'élément à supprimer
+
+        if ($categories === null) {
+            return back()->with('error', 'La commande demandée est introuvable.');
+        }
+        $categories->delete();
+        return redirect()->route('admin.listeCat');
+    }
+
+    // -----Listes json------------
+    public function getCommandesJson()
+    {
+        $commandes = Commande::all();
+        return response()->json($commandes);
+    }
+    public function getFastFoodsJson()
+    {
+        $fastfoods = FastFood::all();
+        return response()->json($fastfoods);
+    }
+    public function getCategoriesJson()
+    {
+        $categories = Categorie::all();
+        return response()->json($categories);
     }
 }

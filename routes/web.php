@@ -44,12 +44,23 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     // route pour ajouter une categorie et fastfood
     Route::post("admin/addcat",[HomeController::class,'store'])->name('admin.addcat');
     Route::post("admin/addfast",[HomeController::class,'storeFast'])->name('admin.addfast');
-    Route::post("admin/addcommande",[HomeController::class,'storeCommande'])->name('admin.addcommande');
+    Route::post("admin/addcommande",[HomeController::class,'addCommande'])->name('admin.addcommande');
     // route pour lister
     Route::get("admin/listeCat",[HomeController::class,'displayCat'])->name('admin.listeCat');
     Route::get("admin/listeFast", [HomeController::class,'displayFast'])->name('admin.listeFast');
     Route::get("admin/listeCom", [HomeController::class,'displayCom'])->name('admin.listeCom');
+
+    Route::get('admin/getCommandes',[HomeController::class,'getCommandesJson'])->name('admin.getCommandes');
+    Route::get('admin/getFast',[HomeController::class,'getFastFoodsJson'])->name('admin.getFastFoods');
+    Route::get('admin/getCategories',[HomeController::class,'getCategoriesJson'])->name('admin.getCategories');
+
+    Route::delete('admin/deleteFast/{id}',[HomeController::class,'destroyFast'])->name('admin.destroyFast');
+    Route::delete('admin/deleteCat/{id}',[HomeController::class,'destroyCat'])->name('admin.destroyCat');
+    Route::delete('admin/deleteCom/{id}', [HomeController::class,'destroyCommande'])->name('admin.destroyCommande');
+    Route::post('admin/updateState/{id}/', [HomeController::class,'updateStateCommande'])->name('admin.updateState');
+
 });
+
 
 //Route::post("/addCommande",[HomeController::class,'addCommande'])->name('addCommande');
 Route::post('/commandes', [HomeController::class, 'addCommande']);

@@ -17,4 +17,9 @@ class FastFood extends Model
         'qtitePanierFast',
         'imageFast',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Categorie::class, 'categories_id');
+    }
 }

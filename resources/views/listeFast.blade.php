@@ -23,14 +23,19 @@
                     <tr class="text-center">
                         <td>{{ $fastfood->id }}</td>
                         <td>{{ $fastfood->nomFast }}</td>
-                        <td>{{$fastfood->descriptionFast}}</td>
-                        <td>{{$fastfood->categories_id}}</td>
-                        {{-- <td>{{$cat->nomCat}}</td> --}}
+                        <td>{{$fastfood->descriptionFast}}</td> 
+                        <td>{{ $fastfood->category->nomCat }}</td>
                         <td>{{$fastfood->prixFast}}</td>
                         <td>{{$fastfood->qtiteFast}}</td>
                         <td>{{$fastfood->qtitePanierFast}}</td>
                         <td> <img src="{{ asset('uploads/fastImage/'. $fastfood->imageFast) }}" width="60px" height="60px" alt="Image"> </td>
-                        <td>---------</td>
+                        <td>
+                            <form action="{{ route('admin.destroyFast', $fastfood->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                            </form>
+                        </td>
                         <td>---------</td>
                     </tr>
                     @endforeach

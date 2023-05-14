@@ -21,7 +21,13 @@
                         <td>{{ $categorie->nomCat }}</td>
                         <td>{{ $categorie->descriptionCat }}</td>
                         <td> <img src="{{ asset('uploads/catImage/'. $categorie->imageCat) }}" width="60px" height="60px" alt="Image"> </td>
-                        <td>---------</td>
+                        <td>
+                            <form action="{{ route('admin.destroyCat', $categorie->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Supprimer</button>
+                            </form>
+                        </td>
                         <td>---------</td>
                     </tr>
                     @endforeach
