@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Categorie;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Models\Client;
 use App\Models\FastFood;
 use App\Models\Commande;
 
@@ -61,10 +62,15 @@ class HomeController extends Controller
             'categories' => $categories,
         ]);
     }
-
+    //formulaire d'ajout de commande
     public function homeCommande()
     {
         return view('addcom');
+    }
+    //formulaire d'ajout de l'utlisateur
+    public function homeClient()
+    {
+        return view('addcli');
     }
 
     public function listes()
@@ -168,6 +174,13 @@ class HomeController extends Controller
         return view('listCom')->with('commandes', $commandes);
     }
 
+    //afficher la liste de mes futures
+    public function displayCli()
+    {
+        $clients = Client::all();
+        return view('listCli')->with('clients', $clients);
+    }
+
     //ajouter une commande
     public function addCommande(Request $request)
     {
@@ -176,6 +189,7 @@ class HomeController extends Controller
         $article = $request->input('article');
         $dansLePanier = $request->input('dansLePanier');
         $prixU = $request->input('prixU');
+        $tel = $request->input('tel');
 
         $commande = new Commande();
         $commande->client = $client;
@@ -183,9 +197,34 @@ class HomeController extends Controller
         $commande->article = $article;
         $commande->dansLePanier = $dansLePanier;
         $commande->prixU = $prixU;
+        $commande->tel = $tel;
 
         if ($commande->save()) {
             return view('addcom')->with('commande', $commande);
+            /*  return response()->json([
+                "success" => true,
+            ]); */
+        } else {
+            return response()->json([
+                "error" => false,
+            ]);
+        }
+    }
+
+    //ajouter un client
+    public function addCli(Request $request)
+    {
+        $nomCli = $request->input('nomCli');
+        $prenomCli = $request->input('prenomCli');
+        $telCli = $request->input('telCli');
+
+        $client = new Client();
+        $client->nomCli = $nomCli;
+        $client->prenomCli = $prenomCli;
+        $client->telCli = $telCli;
+
+        if ($client->save()) {
+            return view('addcli')->with('client', $client);
             /*  return response()->json([
                 "success" => true,
             ]); */

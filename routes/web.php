@@ -45,10 +45,12 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     Route::post("admin/addcat",[HomeController::class,'store'])->name('admin.addcat');
     Route::post("admin/addfast",[HomeController::class,'storeFast'])->name('admin.addfast');
     Route::post("admin/addcommande",[HomeController::class,'addCommande'])->name('admin.addcommande');
+    Route::post("admin/addcli", [HomeController::class,'addCli'])->name('admin.addcli');
     // route pour lister
     Route::get("admin/listeCat",[HomeController::class,'displayCat'])->name('admin.listeCat');
     Route::get("admin/listeFast", [HomeController::class,'displayFast'])->name('admin.listeFast');
     Route::get("admin/listeCom", [HomeController::class,'displayCom'])->name('admin.listeCom');
+    Route::get("admin/listeCli", [HomeController::class,'displayCli'])->name('admin.listeCli');
 
     Route::get('admin/getCommandes',[HomeController::class,'getCommandesJson'])->name('admin.getCommandes');
     Route::get('admin/getFast',[HomeController::class,'getFastFoodsJson'])->name('admin.getFastFoods');
@@ -77,5 +79,9 @@ Route::middleware(['auth','user-role:admin'])->group(function()
 Route::middleware(['auth','user-role:admin'])->group(function()
 {
     Route::get("/admin/commande",[HomeController::class,'homeCommande'])->name('home.commande');
+});
+Route::middleware(['auth','user-role:admin'])->group(function()
+{
+    Route::get("/admin/client",[HomeController::class,'homeClient'])->name('home.client');
 });
 

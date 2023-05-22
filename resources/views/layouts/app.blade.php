@@ -87,6 +87,7 @@
                                 <li><a class="dropdown-item" href="{{ route('home.cat') }}">Catégorie</a></li>
                                 <li><a class="dropdown-item" href="{{ route('home.fast') }}">FastFood</a></li>
                                 <li><a class="dropdown-item" href="{{ route('home.commande') }}">Commandes</a></li>
+                                <li><a class="dropdown-item" href="{{ route('home.client') }}">Clients</a></li>
                             </ul>
                         </li>
                         <li class="nav-item dropdown">
@@ -98,6 +99,7 @@
                                 <li><a class="dropdown-item" href="{{ route('admin.listeCat')}}">Liste des Catégorie</a></li>
                                 <li><a class="dropdown-item" href="{{ route('admin.listeFast') }}">Liste des FastFood</a></li>
                                 <li><a class="dropdown-item" href="{{ route('admin.listeCom') }}">Liste des Commandes</a></li>
+                                <li><a class="dropdown-item" href="{{ route('admin.listeCli') }}">Liste des Clients</a></li>
                             </ul>
                         </li>
                     </ul>

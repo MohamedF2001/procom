@@ -8,6 +8,7 @@
                         <th scope="col">ID</th>
                         <th scope="col">Client</th>
                         <th scope="col">Prenom</th>
+                        <th scope="col">Numéro</th>
                         <th scope="col">Article</th>
                         <th scope="col">Dans le panier</th>
                         <th scope="col">Prix U</th>
@@ -22,6 +23,7 @@
                             <td>{{ $commande->id }}</td>
                             <td>{{ $commande->client }}</td>
                             <td>{{ $commande->prenom }}</td>
+                            <td>{{ $commande->tel }}</td>
                             <td>{{ $commande->article }}</td>
                             <td>{{ $commande->dansLePanier }}</td>
                             <td>{{ $commande->prixU }}</td>
@@ -62,5 +64,5 @@
     </div>
 
     {{-- Fin table --}}
-    
+
 @endsection

@@ -20,5 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/commandes', 'App\Http\Controllers\HomeController@addCommande');
 Route::delete('/admin/deleteCom/{id}', 'HomeController@destroyCommande')->name('admin.destroyCommande');
-
+Route::delete('/admin/deleteCli/{id}', 'HomeController@destroyClient')->name('admin.destroyClient');
 
