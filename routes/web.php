@@ -55,6 +55,7 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     Route::get('admin/getCommandes',[HomeController::class,'getCommandesJson'])->name('admin.getCommandes');
     Route::get('admin/getFast',[HomeController::class,'getFastFoodsJson'])->name('admin.getFastFoods');
     Route::get('admin/getCategories',[HomeController::class,'getCategoriesJson'])->name('admin.getCategories');
+    Route::get('admin/getClients',[HomeController::class,'getClientsJson'])->name('admin.getClients');
 
     Route::delete('admin/deleteFast/{id}',[HomeController::class,'destroyFast'])->name('admin.destroyFast');
     Route::delete('admin/deleteCat/{id}',[HomeController::class,'destroyCat'])->name('admin.destroyCat');

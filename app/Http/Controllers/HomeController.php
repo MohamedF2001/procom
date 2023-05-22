@@ -302,4 +302,9 @@ class HomeController extends Controller
         $categories = Categorie::all();
         return response()->json($categories);
     }
+    public function getClientsJson()
+    {
+        $clients = Client::all();
+        return response()->json($clients);
+    }
 }
