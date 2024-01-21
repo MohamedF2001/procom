@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('create')
     <div class="container mt-5 mb-5">
+         <!--Debut titre-->
+         <div class="d-flex justify-content-center py-4">
+            <span class="d-none d-lg-block align-items-center h3"> Liste des commandes</span>
+        </div>
+        <!--Fin titre-->
         <div class="table-responsive-sm ">
             <table class="table table-striped table-hover " id="myTable">
                 <thead class="table-primary">

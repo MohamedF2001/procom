@@ -14,14 +14,14 @@
     <link href="{{asset('assets/favicon.png')}}" rel="icon">
     <title>Martfury Admin</title>
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{asset('assets/plugins/font-awesome/css/font-awesome.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/fonts/Linearicons/Font/demo-files/demo.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/plugins/bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/plugins/owl-carousel/assets/owl.carousel.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/plugins/select2/dist/css/select2.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/plugins/summernote/summernote-bs4.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/plugins/apexcharts-bundle/dist/apexcharts.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('news/plugins/font-awesome/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" href="{{asset('news/fonts/Linearicons/Font/demo-files/demo.css')}}">
+    <link rel="stylesheet" href="{{asset('news/plugins/bootstrap/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('news/plugins/owl-carousel/assets/owl.carousel.css')}}">
+    <link rel="stylesheet" href="{{asset('news/plugins/select2/dist/css/select2.min.css')}}">
+    <link rel="stylesheet" href="{{asset('news/plugins/summernote/summernote-bs4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('news/plugins/apexcharts-bundle/dist/apexcharts.css')}}">
+    <link rel="stylesheet" href="{{asset('news/css/style.css')}}">
 </head>
 
 <body>
@@ -29,7 +29,7 @@
         <div class="header__left">
             <button class="ps-drawer-toggle"><i class="icon icon-menu"></i></button><img src="" alt="">
         </div>
-        <div class="header__center"><a class="ps-logo" href="#"><img src="{{asset('assets/img/logo.png')}}" alt=""></a></div>
+        <div class="header__center"><a class="ps-logo" href="#"><img src="{{asset('news/img/logo.png')}}" alt=""></a></div>
         <div class="header__right"><a class="header__site-link" href="#"><i class="icon-exit-right"></i></a></div>
     </header>
     <aside class="ps-drawer--mobile">
@@ -55,7 +55,7 @@
             <div class="ps-sidebar">
                 <div class="ps-sidebar__top">
                     <div class="ps-block--user-wellcome">
-                        <div class="ps-block__left"><img src="{{asset('assets/img/user/admin.jpg')}}" alt="" /></div>
+                        <div class="ps-block__left"><img src="{{asset('news/img/user/admin.jpg')}}" alt="" /></div>
                         <div class="ps-block__right">
                             <p>Hello,<a href="#">Soho Store</a></p>
                         </div>
@@ -78,7 +78,7 @@
                         </ul>
                     </div>
                     <div class="ps-sidebar__footer">
-                        <div class="ps-copyright"><img src="{{asset('assets/img/logo.png')}}" alt="">
+                        <div class="ps-copyright"><img src="{{asset('news/img/logo.png')}}" alt="">
                             <p>&copy;2020 Marfury marketplace. <br/> All rights reversed.</p>
                         </div>
                     </div>
@@ -304,7 +304,7 @@
                                         <figcaption>Russia</figcaption><strong>35%</strong>
                                     </figure>
                                 </div>
-                            </div><img src="{{asset('assets/img/map-and-bundle.png')}}" alt="">
+                            </div><img src="{{asset('news/img/map-and-bundle.png')}}" alt="">
                             <p>We only started collecting region data from January 2015</p>
                         </div>
                     </section>
@@ -312,16 +312,16 @@
             </section>
         </div>
     </main>
-    <script src="{{asset('assets/plugins/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/popper.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/jquery.matchHeight-min.js')}}"></script>
-    <script src="{{asset('assets/plugins/select2/dist/js/select2.full.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/summernote/summernote-bs4.min.js')}}"></script>
-    <script src="{{asset('assets/plugins/apexcharts-bundle/dist/apexcharts.min.js')}}"></script>
-    <script src="{{asset('assets/js/chart.js')}}"></script>
+    <script src="{{asset('news/plugins/jquery.min.js')}}"></script>
+    <script src="{{asset('news/plugins/popper.min.js')}}"></script>
+    <script src="{{asset('news/plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+    <script src="{{asset('news/plugins/jquery.matchHeight-min.js')}}"></script>
+    <script src="{{asset('news/plugins/select2/dist/js/select2.full.min.js')}}"></script>
+    <script src="{{asset('news/plugins/summernote/summernote-bs4.min.js')}}"></script>
+    <script src="{{asset('news/plugins/apexcharts-bundle/dist/apexcharts.min.js')}}"></script>
+    <script src="{{asset('news/js/chart.js')}}"></script>
     <!-- custom code-->
-    <script src="{{asset('assets/js/main.js')}}"></script>
+    <script src="{{asset('news/js/main.js')}}"></script>
 </body>
 
 </html>

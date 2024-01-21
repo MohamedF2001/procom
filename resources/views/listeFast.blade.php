@@ -2,6 +2,11 @@
 @section('create')
 
     <div class="container mt-5 mb-5">
+         <!--Debut titre-->
+         <div class="d-flex justify-content-center py-4">
+            <span class="d-none d-lg-block align-items-center h3"> Liste des fastfoods</span>
+        </div>
+        <!--Fin titre-->
         <div class="table-responsive-sm ">
             <table class="table table-striped table-hover " id="myTable">
                 <thead class="table-primary">
@@ -23,7 +28,7 @@
                     <tr class="text-center">
                         <td>{{ $fastfood->id }}</td>
                         <td>{{ $fastfood->nomFast }}</td>
-                        <td>{{$fastfood->descriptionFast}}</td> 
+                        <td>{{$fastfood->descriptionFast}}</td>
                         <td>{{ $fastfood->category->nomCat }}</td>
                         <td>{{$fastfood->prixFast}}</td>
                         <td>{{$fastfood->qtiteFast}}</td>

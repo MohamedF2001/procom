@@ -86,3 +86,4 @@ Route::middleware(['auth','user-role:admin'])->group(function()
     Route::get("/admin/client",[HomeController::class,'homeClient'])->name('home.client');
 });
 
+Route::get("/templates",[HomeController::class,'templates']);

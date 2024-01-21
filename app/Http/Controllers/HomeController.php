@@ -307,4 +307,9 @@ class HomeController extends Controller
         $clients = Client::all();
         return response()->json($clients);
     }
+
+    public function templates()
+    {
+        return view("admin.index");
+    }
 }

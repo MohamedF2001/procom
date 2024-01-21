@@ -8,7 +8,7 @@
                     <div class="">
                         <!--Debut titre-->
                         <div class="d-flex justify-content-center py-4">
-                            <span class="d-none d-lg-block align-items-center h3"> Nouveau FastFood</span>
+                            <span class="d-none d-lg-block align-items-center h3"> Ajouter un fastFood</span>
                         </div>
                         <!--Fin titre-->
 
